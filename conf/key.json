@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "rock-task-489910-p9",
+  "private_key_id": "6f69ed577cddea1c307e25cc8c14a8e68a6b8450",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC0b6jRt8wLeedk\nshVR0/9lvk08ym4N41O2XUGUzzoZGcNY4Sy9df6jZc3kuvQtyO9O/cjHYENw9Q1K\nwmjPdTEZCn+nRSNXDPP6RBfaPth/qNOGTo1kye4WJBMo/pbH88Ps0unZjtld9kqK\nQrYUy+v1oOYjBO7AEhSjjcxPC7AfkE2lua67gqeL8dmhPWzrmD9hdmyoxqeM9Tb9\nXOXcGUsfqAvvIanthwvfNkAr5moVBrc9IG5Q6xSvuLXwDpAVuNkAbOrgCzROie6d\n6AcrSmeAsTvyYAirtxWiZrSq1O6InDBlCeEwFOD33fiMlImswZwyj5mFwtiOq8UV\nVgzmmaYjAgMBAAECggEACiLnsfhdpHC8Y2IZuSzBVpQ36egEAhBjkzAZT2R2LWjO\nxOnJcKSgocnwpMktOdE67bjAvxU/qf3U5FPtkrymUx4i3mEPmNlSb3HEgUSHNwy4\nl/1GYNjIi5ff4lgDB8fq7sfzzn6sOWTCT+gVgITq2YlTbw4yN2S3TMTaKxVLV0p/\nfvgegYgS+Kbs5ZTJaS7F8wISgWnHDAdvaAzzbWAq8cmjm1UDJOB1Zq92cDzDuawN\ntuhMmkNCYyppiLO+Uai9yPFrYojBE5Eu/Hhwxye8OzhbQqO8xANH2VK0DSKkkU7J\nGkyzfSqfnCCzlT2iYOTHz8mcMIRU1/WXAIIVfoWqUQKBgQDiL6y+ocnMpomA2Nyy\nK63YJmQFxS9YRkWckdgqu/z0EAX5OS54BDU/J9gSykYVO3j1h2VOLg+yYg9ugzRY\nh9LzYox1xbV/1MdwO8JvdmthfJDJSid+y1GGHqq6YSZXvXlL7OfSmnioeUBdw93Y\nTqrnvYNt5uXaEmHNdndc+1lb+QKBgQDMODcoflH6ztbp4zd5LnYiON5U8FG4hGvq\npryCmFD6YC6eo0WbDdo0nOKPlXYOur4UM+kZJMpTgm2X9eJT61Lw+P+EJgerOn05\nCTTrSn7I/eW6Xq1xZRZHUd0GyrwTeI1R7r9++7lqztX+UGHLo0OBT3hR8q9JDUKB\ntS8pJMSB+wKBgE0pAGAj5yimY2AOGvO5DNwg9Jw3UVhm2JZ59mlVqgxEbxU/GYgd\nv2BlIkP+tvvFRxVTdA7AjeBHrYYAwlm1NBSNOOdwY+NQ3hx+dmz509X03ZudbW3G\nxG/hhFKCk8b4vylUjxz8T08B1iBmkgaZh5n4v549V4oWHUEvObcBk9FZAoGALvjX\nJwc3D/s3T4Clp8faADEYYm0MPuamc8h6H4etSImK744aWnmrMOLM8b2s8+JcCgWO\nnevqZZ7gWk2CC09bOnXrP5gHt4iyeMX3WA9AbjaH+oAAYM6hezIHJqLG86uMxcWm\nYizADyMX8XDHrbEVu85tnFu3mZPlMjRcbpg4YrUCgYBlgW4Jyd56zg0I/nXhV03/\nN6b80eSFEoiJdrr1YsXLmyfaxVOwvtFnlIMFmJ/0jGDwCACxE34so7CGqZYmlaZB\nYRQlUk0EdoH0NPtT6pmVjDWeGFW9updE+bNVpRxnkZnH5ytyu5urWV6oT+dW9eCA\nXZgFOfRSZ8efKhZlTMgYtQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "mlflow-safe@rock-task-489910-p9.iam.gserviceaccount.com",
+  "client_id": "116020992862020287135",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mlflow-safe%40rock-task-489910-p9.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
