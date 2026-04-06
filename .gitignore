@@ -5,13 +5,12 @@ build/
 dist/
 wheels/
 *.egg-info
-
-# Virtual environments
 .venv
-
-conf/**
+conf/*.json
+conf/key.json
 .env
 venv/
 __pycache__/
 *.py[cod]
 *$py.class
+.env
