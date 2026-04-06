@@ -9,3 +9,5 @@ steps:
   args: ['run', 'deploy', 'purchase-predict-api', '--image', 'gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA', '--region', 'europe-west1', '--platform', 'managed']
 images:
 - gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA
+options:
+  logging: CLOUD_LOGGING_ONLY
