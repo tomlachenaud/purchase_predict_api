@@ -2,11 +2,32 @@
 steps:
 - name: "gcr.io/cloud-builders/docker"
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA', '.']
+
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA']
+
+# --- ON REMPLACE CLOUD RUN PAR KUBERNETES CI-DESSOUS ---
+
+# Templating : On insère le numéro du commit dans le fichier K8s
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'purchase-predict-api', '--image', 'gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA', '--region', 'europe-west1', '--platform', 'managed']
+  entrypoint: /bin/sh
+  args:
+    - '-c'
+    - |
+       sed "s/DOCKER_TAG/${SHORT_SHA}/g" k8s/deployment.yaml > deployment_ready.yaml
+
+# Déploiement automatique sur Kubernetes
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+    - 'apply'
+    - '-f'
+    - 'deployment_ready.yaml'
+    - '--namespace'
+    - 'api-purchase'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=purchase-predict-api'
+
 images:
 - gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA
 options:

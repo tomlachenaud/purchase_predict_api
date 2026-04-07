@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: purchase-predict
+  labels:
+    app: purchase-predict
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pod-purchase-predict
+  template:
+    metadata:
+      labels:
+        app: pod-purchase-predict
+    spec:
+      containers:
+      - name: pod-purchase-predict
+        # On utilise ton projet ici
+        image: gcr.io/rock-task-489910-p9/purchase-predict-api:6485882        
+        env:
+        - name: PORT
+          value: "80"
+        - name: ENV
+          value: "staging"
+        - name: MLFLOW_SERVER
+          value: "http://34.61.103.146"
+        - name: MLFLOW_REGISTRY_NAME
+          value: "purchase_predict"
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "0.5G"
+            cpu: "0.5"
+          limits:
+            memory: "1G"
+            cpu: "1"
