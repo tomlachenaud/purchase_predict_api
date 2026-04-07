@@ -17,7 +17,7 @@ spec:
       containers:
       - name: pod-purchase-predict
         # On utilise ton projet ici
-        image: gcr.io/rock-task-489910-p9/purchase-predict-api:6485882        
+        image: gcr.io/rock-task-489910-p9/purchase-predict-api:DOCKER_TAG       
         env:
         - name: PORT
           value: "80"
