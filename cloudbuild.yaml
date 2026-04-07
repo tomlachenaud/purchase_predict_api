@@ -3,9 +3,11 @@ steps:
 - name: "gcr.io/cloud-builders/docker"
   id: Building Docker image
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA', '.']
+
 - name: 'gcr.io/cloud-builders/docker'
   id: Pushing Docker image
   args: ['push', 'gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA']
+
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   id: Rendering templated K8s YAML file
   entrypoint: /bin/sh
@@ -14,6 +16,7 @@ steps:
   - |
      sed -s '$a---' k8s/*.yaml > config.yaml.tpl &&
      sed "s/DOCKER_TAG/${SHORT_SHA}/g" config.yaml.tpl > config.yaml
+
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Deploy to K8s
   args:
@@ -25,3 +28,10 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=purchase-predict-api'
+
+# Ces deux blocs en bas sont obligatoires pour corriger ton erreur
+images:
+- 'gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
