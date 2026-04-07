@@ -1,34 +1,27 @@
 # Liste des Cloud Builders : https://console.cloud.google.com/gcr/images/cloud-builders/GLOBAL
 steps:
 - name: "gcr.io/cloud-builders/docker"
+  id: Building Docker image
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA', '.']
-
 - name: 'gcr.io/cloud-builders/docker'
+  id: Pushing Docker image
   args: ['push', 'gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA']
-
-# --- ON REMPLACE CLOUD RUN PAR KUBERNETES CI-DESSOUS ---
-
-# Templating : On insère le numéro du commit dans le fichier K8s
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  id: Rendering templated K8s YAML file
   entrypoint: /bin/sh
   args:
-    - '-c'
-    - |
-       sed "s/DOCKER_TAG/${SHORT_SHA}/g" k8s/deployment.yaml > deployment_ready.yaml
-
-# Déploiement automatique sur Kubernetes
+  - '-c'
+  - |
+     sed -s '$a---' k8s/*.yaml > config.yaml.tpl &&
+     sed "s/DOCKER_TAG/${SHORT_SHA}/g" config.yaml.tpl > config.yaml
 - name: 'gcr.io/cloud-builders/kubectl'
+  id: Deploy to K8s
   args:
-    - 'apply'
-    - '-f'
-    - 'deployment_ready.yaml'
-    - '--namespace'
-    - 'api-purchase'
+  - 'apply'
+  - '--namespace'
+  - 'api-purchase'
+  - '-f'
+  - 'config.yaml'
   env:
-    - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=purchase-predict-api'
-
-images:
-- gcr.io/$PROJECT_ID/purchase-predict-api:$SHORT_SHA
-options:
-  logging: CLOUD_LOGGING_ONLY
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=purchase-predict-api'
